@@ -1574,6 +1574,18 @@
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
         }
       },
+      "SeleniumExtras.WaitHelpers/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Selenium.WebDriver": "4.0.0-beta2"
+        },
+        "compile": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll": {}
+        }
+      },
       "SharpCompress/0.23.0": {
         "type": "package",
         "dependencies": {
@@ -3083,6 +3095,7 @@
           "Selenium.Support": "4.5.1",
           "Selenium.WebDriver": "4.5.1",
           "Selenium.WebDriver.ChromeDriver": "107.0.5304.6200",
+          "SeleniumExtras.WaitHelpers": "1.0.2",
           "coverlet.collector": "3.1.2"
         },
         "compile": {
@@ -5296,6 +5309,19 @@
         "nupkg-icon.png",
         "selenium.webdriver.chromedriver.107.0.5304.6200.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
+      ]
+    },
+    "SeleniumExtras.WaitHelpers/1.0.2": {
+      "sha512": "de7m30nkZZLkfCncYBdluUpM27AR/Vkk4kiA4HRQbV+fZI3ps4qGIeJCuj8TAMXdMfQik5Rno8xPnFBIod+ebg==",
+      "type": "package",
+      "path": "seleniumextras.waithelpers/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "lib/netstandard2.1/SeleniumExtras.WaitHelpers.dll",
+        "seleniumextras.waithelpers.1.0.2.nupkg.sha512",
+        "seleniumextras.waithelpers.nuspec"
       ]
     },
     "SharpCompress/0.23.0": {
@@ -9689,6 +9715,7 @@
       "NUnit.Analyzers >= 3.3.0",
       "NUnit3TestAdapter >= 4.2.1",
       "Selenium.WebDriver.ChromeDriver >= 107.0.5304.6200",
+      "SeleniumExtras.WaitHelpers >= 1.0.2",
       "coverlet.collector >= 3.1.2"
     ]
   },
@@ -9698,11 +9725,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\gitRookies\\Rookies\\SeleniumAdvantage_Day3\\testFramework\\testFramework\\testFramework.csproj",
+      "projectUniqueName": "E:\\Rookies_Phase2\\testFramework\\testFramework.csproj",
       "projectName": "testFramework",
-      "projectPath": "E:\\gitRookies\\Rookies\\SeleniumAdvantage_Day3\\testFramework\\testFramework\\testFramework.csproj",
+      "projectPath": "E:\\Rookies_Phase2\\testFramework\\testFramework.csproj",
       "packagesPath": "C:\\Users\\84366\\.nuget\\packages\\",
-      "outputPath": "E:\\gitRookies\\Rookies\\SeleniumAdvantage_Day3\\testFramework\\testFramework\\obj\\",
+      "outputPath": "E:\\Rookies_Phase2\\testFramework\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\84366\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9719,8 +9746,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\gitRookies\\Rookies\\SeleniumAdvantage_Day3\\testFramework\\CoreFramework\\CoreFramework.csproj": {
-              "projectPath": "E:\\gitRookies\\Rookies\\SeleniumAdvantage_Day3\\testFramework\\CoreFramework\\CoreFramework.csproj"
+            "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj": {
+              "projectPath": "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj"
             }
           }
         }
@@ -9758,6 +9785,10 @@
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
             "version": "[107.0.5304.6200, )"
+          },
+          "SeleniumExtras.WaitHelpers": {
+            "target": "Package",
+            "version": "[1.0.2, )"
           },
           "coverlet.collector": {
             "target": "Package",

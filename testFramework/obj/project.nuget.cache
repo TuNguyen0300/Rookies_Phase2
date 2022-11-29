@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4O9erEwz60l1huhXb2j3OgmBh74LkDHW3MtyiN9Z2Sh4Zd7LfBdxwaKFq673EHgumWuKmzdbdHLCw9qkLAS2vg==",
+  "dgSpecHash": "dHT256bUCx1OqitQiW8HjaWMwFAlWwCnPqhs2qaNWhaJvZXX5ka7H+5JsrYWpuXU9aFLE91OF6D1DUfgTZCYdQ==",
   "success": true,
-  "projectFilePath": "E:\\gitRookies\\Rookies\\SeleniumAdvantage_Day3\\testFramework\\testFramework\\testFramework.csproj",
+  "projectFilePath": "E:\\Rookies_Phase2\\testFramework\\testFramework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\84366\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\84366\\.nuget\\packages\\dnsclient\\1.2.0\\dnsclient.1.2.0.nupkg.sha512",
@@ -104,6 +104,7 @@
     "C:\\Users\\84366\\.nuget\\packages\\selenium.support\\4.5.1\\selenium.support.4.5.1.nupkg.sha512",
     "C:\\Users\\84366\\.nuget\\packages\\selenium.webdriver\\4.5.1\\selenium.webdriver.4.5.1.nupkg.sha512",
     "C:\\Users\\84366\\.nuget\\packages\\selenium.webdriver.chromedriver\\107.0.5304.6200\\selenium.webdriver.chromedriver.107.0.5304.6200.nupkg.sha512",
+    "C:\\Users\\84366\\.nuget\\packages\\seleniumextras.waithelpers\\1.0.2\\seleniumextras.waithelpers.1.0.2.nupkg.sha512",
     "C:\\Users\\84366\\.nuget\\packages\\sharpcompress\\0.23.0\\sharpcompress.0.23.0.nupkg.sha512",
     "C:\\Users\\84366\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\84366\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",

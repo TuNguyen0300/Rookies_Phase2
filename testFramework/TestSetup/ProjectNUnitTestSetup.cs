@@ -13,7 +13,8 @@ namespace testFramework.TestSetup
         [SetUp]
         public void SetUp()
         {
-            _driver.Url = "https://demo.guru99.com/v4/index.php";
+            driverBaseAction.GoToUrl(Constant.BASE_URL);
+
         }
 
         [TearDown]

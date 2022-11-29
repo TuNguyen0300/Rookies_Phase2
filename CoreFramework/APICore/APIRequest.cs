@@ -11,9 +11,9 @@ namespace CoreFramework.APICore
     public class APIRequest
     {
         public HttpWebRequest request;
-        public string url;
-        public string requestBody;
-        public string formData;
+        public string url { get; set; }
+        public string requestBody { get; set; }
+        public string formData { get; set; }
 
         public APIRequest SetUrl(string url)
         {
@@ -21,6 +21,7 @@ namespace CoreFramework.APICore
             request = (HttpWebRequest)WebRequest.Create(url);
             return this;
         }
+
         public APIRequest()
         {
             url = "";
@@ -33,26 +34,29 @@ namespace CoreFramework.APICore
             requestBody = "";
             formData = "";
         }
+
         public APIRequest AddHeader(string key, string value)
         {
             request.Headers.Add(key, value);
             return this;
         }
+
         public APIRequest SetRequestParameter(string key, string value)
         {
             if (url.Contains("?"))
             {
-                url = url + "?" + key + "=" + value;
+                url += "?" + key + "=" + value;
             }
             else
             {
-                url = url +"&"+ key + "=" + value;
+                url += "&" + key + "=" + value;
             }
             return this;
         }
+
         public APIRequest AddFormData(string key, string value)
         {
-            if(formData.Equals("") || formData == null)
+            if (formData.Equals("") || formData == null)
             {
                 formData += key + "=" + value;
             }
@@ -62,20 +66,80 @@ namespace CoreFramework.APICore
             }
             return this;
         }
+
         public APIRequest SetBody(string body)
         {
             this.requestBody = body;
             return this;
         }
+
+        /*-------------------HTTP CLIENT
+        private HttpMethod CreateHttpMethod(string method)
+        {
+            switch (method.ToUpper())
+            {
+                case "GET":
+                    return HttpMethod.Get;
+                case "POST":
+                    return HttpMethod.Post;
+                case "HEAD":
+                    return HttpMethod.Head;
+                case "DELETE":
+                    return HttpMethod.Delete;
+                case "OPTIONS":
+                    return HttpMethod.Options;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+        */
+
+        /*-------SEND REQUEST------*/
+
+        public APIResponse Get()
+        {
+            request.Method = "GET";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
+        public APIResponse Post()
+        {
+            request.Method = "POST";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
+        public APIResponse Put()
+        {
+            request.Method = "PUT";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
+        public APIResponse Head()
+        {
+            request.Method = "HEAD";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
+        public APIResponse Delete()
+        {
+            request.Method = "DELETE";
+            APIResponse response = SendRequest();
+            return response;
+        }
+
         public APIResponse SendRequest()
         {
-            if(request.Method == "GET")
+            if (request.Method == "GET")
             {
                 requestBody = null;
             }
             else
             {
-                if(requestBody != null)
+                if (requestBody != null)
                 {
                     byte[] byteArray = Encoding.UTF8.GetBytes(requestBody);
                     request.ContentLength = byteArray.Length;
@@ -86,9 +150,9 @@ namespace CoreFramework.APICore
                         dataStream.Close();
                     }
                 }
-                if (!formData.Equals(""))
+                if (!formData.Equals("."))
                 {
-                    byte[] byteArray = Encoding.UTF8.GetBytes(formData);
+                    byte[] byteArray = Encoding.UTF8.GetBytes(requestBody);
                     request.ContentLength = byteArray.Length;
                     using (Stream dataStream = request.GetRequestStream())
                     {
@@ -102,13 +166,14 @@ namespace CoreFramework.APICore
             {
                 IAsyncResult asyncResult = request.BeginGetResponse(null, null);
                 asyncResult.AsyncWaitHandle.WaitOne();
-                var httpResponse = (HttpWebResponse) request.EndGetResponse(asyncResult);
+                var httpResponse = (HttpWebResponse)request.EndGetResponse(asyncResult);
                 APIResponse response = new APIResponse(httpResponse);
                 HtmlReport.CreateAPIRequestLog(this, response);
+                return response;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-
+                throw ex;
             }
         }
     }

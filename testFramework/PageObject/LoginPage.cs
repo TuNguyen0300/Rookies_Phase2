@@ -15,13 +15,36 @@ namespace testFramework.PageObject
         {
         }
 
-        private readonly string tfUserName = "//input[@name='uid']";
+        private readonly string boxUserName = "//input[@id='login_username']";
+        private readonly string boxPassword = "//input[@id='login_password']";
+        private readonly string buttonLogin = "//button[@type='submit']";
 
-        public void inputUserName(string UserName)
+        private readonly string btnMenu = "//span[@class='ant-menu-title-content']";
+        private readonly string btnChangePass = "//a[text()='Change Password']";
+
+        public void ClickMenu()
         {
-            SendKeys_(tfUserName, UserName);
+            Click(btnMenu);
         }
 
+        public void ClickChangePassword()
+        {
+            Click(btnChangePass);
+        }
+
+        public void InputUserName(string username)
+        {
+            SendKeys_(boxUserName, username);
+        }
+        public void InputPassword(string password)
+        {
+            SendKeys_(boxPassword, password);
+        }
+        public void ClickLogin()
+        {
+            Click(buttonLogin);
+        }
+        
 
     }
 }

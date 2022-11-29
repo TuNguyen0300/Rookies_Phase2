@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using AventStack.ExtentReports;
+﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.MarkupUtils;
 using AventStack.ExtentReports.Reporter;
 using CoreFramework.APICore;
+using CoreFramework.Reporter.ExtentMarkup;
 using NUnit.Framework;
 
 namespace CoreFramework.Reporter
 {
-    internal class HtmlReport
+    public class HtmlReport
     {
-        private static ExtentTest? _extentTestSuite;
-        private static ExtentTest? _extentTestCase;
         private static int testCaseIndex;
-        private static ExtentReports _report;
 
-        //singleton
+        private static ExtentReports _report;
+        private static ExtentTest extentTestSuite;
+        private static ExtentTest extentTestCase;
+
         public static ExtentReports createReport()
         {
             if (_report == null)
@@ -27,9 +23,10 @@ namespace CoreFramework.Reporter
             }
             return _report;
         }
-        private static ExtentReports createInstance()
+
+        public static ExtentReports createInstance()
         {
-            HtmlReportDirectory.InitReportDirection(); ;
+            HtmlReportDirectory.InitReportDirection();
             ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(HtmlReportDirectory.REPORT_FILE_PATH);
             htmlReporter.Config.DocumentTitle = "Automation Test Report";
             htmlReporter.Config.ReportName = "Automation Test Report";
@@ -40,42 +37,44 @@ namespace CoreFramework.Reporter
             report.AttachReporter(htmlReporter);
             return report;
         }
-        public static void flush() // gen htmlreport
+        public static void flush()
         {
             if (_report != null)
             {
                 _report.Flush();
             }
         }
+
         public static ExtentTest createTest(string className, string classDescription = "")
         {
             if (_report == null)
             {
                 _report = createInstance();
             }
-            _extentTestSuite = _report.CreateTest(className, classDescription);
-
-            return _extentTestSuite;
+            extentTestSuite = _report.CreateTest(className, classDescription);
+            return extentTestSuite;
         }
+
         public static ExtentTest createNode(string className, string testcase, string description = "")
         {
-            if (_extentTestSuite == null)
+            if (extentTestSuite == null)
             {
-                _extentTestSuite = createTest(className);
+                extentTestSuite = createTest(className);
             }
-            _extentTestCase = _extentTestSuite.CreateNode(testcase, description);
-
-            return _extentTestCase;
+            extentTestCase = extentTestSuite.CreateNode(testcase, description);
+            return extentTestCase;
         }
 
         public static ExtentTest GetParent()
         {
-            return _extentTestSuite;
+            return extentTestSuite;
         }
+
         public static ExtentTest GetNode()
         {
-            return _extentTestCase;
+            return extentTestCase;
         }
+
         public static ExtentTest GetTest()
         {
             if (GetNode() == null)
@@ -84,46 +83,101 @@ namespace CoreFramework.Reporter
             }
             return GetNode();
         }
+
         public static void Pass(string des)
         {
             GetTest().Pass(des);
             TestContext.WriteLine(des);
         }
+
         public static void Fail(string des)
         {
             GetTest().Fail(des);
             TestContext.WriteLine(des);
         }
+
         public static void Fail(string des, string path)
         {
             GetTest().Fail(des).AddScreenCaptureFromPath(path);
             TestContext.WriteLine(des);
         }
+
         public static void Fail(string des, string ex, string path)
         {
             GetTest().Fail(des).Fail(ex).AddScreenCaptureFromPath(path);
             TestContext.WriteLine(des);
         }
-        public static void Info(string des)
-        {
-            GetTest().Info(des);
-            TestContext.WriteLine(des);
-        }
 
-        internal static void CreateAPIRequestLog(APIRequest aPIRequest, APIResponse response)
+        /*
+        public static void Info(HttpWebRequest request, HttpWebResponse response)
         {
-            throw new NotImplementedException();
-        }
+            GetTest().Info(MarkupHelperPlus.CreateRequest(request, response);
+        }        */
 
         public static void Warning(string des)
         {
             GetTest().Warning(des);
             TestContext.WriteLine(des);
         }
+
         public static void Skip(string des)
         {
             GetTest().Skip(des);
             TestContext.WriteLine(des);
+        }
+
+        /*----------------------MARKUP EXTENT REPORT------------------------*/
+
+        /*public static void MarkUpHtml()
+        {
+            var htmlMarkup = HtmlInjector.CreateHtml();
+            var m = MarkupHelper.CreateTable(htmlMarkup, ExtentColor.Transparent);
+            GetTest().Info(m);
+        }*/
+        public static void MarkupPassJson()
+        {
+            var json = "{'foo':'bar':'foos':['b','a','r'], " +
+                "'bar':{'foo':'bar', 'bar':false, 'foobar':1234}}";
+            GetTest().Info(MarkupHelper.CreateCodeBlock(json, CodeLanguage.Json));
+        }
+        public static void MarkupTable()
+        {
+            string[][] someInts = new string[][] {
+                new string[] {
+                    "<label> HAHAHA </label>"}
+            };
+            var m = MarkupHelper.CreateTable(someInts);
+            GetTest().Info(m);
+        }
+
+        public static void MarkupPassLabel()
+        {
+            var text = "Passed";
+            var m = MarkupHelper.CreateLabel(text, ExtentColor.Green);
+            GetTest().Pass(m);
+        }
+        public static void MarkupFailLabel()
+        {
+            var text = "Failed";
+            var m = MarkupHelper.CreateLabel(text, ExtentColor.Red);
+            GetTest().Fail(m);
+        }
+        public static void MarkupWarningLabel()
+        {
+            var text = "Warning";
+            var m = MarkupHelper.CreateLabel(text, ExtentColor.Orange);
+            GetTest().Warning(m);
+        }
+        public static void MarkupSkipLabel()
+        {
+            var text = "Skipped";
+            var m = MarkupHelper.CreateLabel(text, ExtentColor.Blue);
+            GetTest().Skip(m);
+        }
+
+        public static void CreateAPIRequestLog(APIRequest request, APIResponse response)
+        {
+            GetTest().Info(MarkupHelperPlus.CreateAPIRequestLog(request, response));
         }
     }
 }

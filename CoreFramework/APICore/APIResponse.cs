@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace CoreFramework.APICore
 {
-    public class APIResponse
+    public class APIResponse : APIRequest
     {
         public HttpWebResponse response;
         public string responseBody { get; set; }
         public string responseStatusCode { get; set; }
+
         public APIResponse(HttpWebResponse response)
         {
             this.response = response;
@@ -19,23 +20,33 @@ namespace CoreFramework.APICore
             GetResponseStatusCode();
         }
 
-        private string GetResponseStatusCode()
+        private string GetResponseBody()
         {
             responseBody = "";
-            using (var responseStream = response.GetResponseStream())
+            using (var stream = response.GetResponseStream())
             {
-                if (responseStream != null)
-                    using (var reader = new StreamReader(responseStream))
+                if (stream != null)
+                    using (var reader = new StreamReader(stream))
                     {
                         responseBody = reader.ReadToEnd();
                     }
+                return responseBody;
             }
-            return responseBody;
         }
 
-        private string GetResponseBody()
+        private string GetResponseStatusCode()
         {
-            throw new NotImplementedException();
+            try
+            {
+                HttpStatusCode statusCode = ((HttpWebResponse)response).StatusCode;
+                responseStatusCode = statusCode.ToString();
+            }
+            catch (WebException we)
+            {
+                responseStatusCode = ((HttpWebResponse)we.Response).StatusCode.ToString();
+
+            }
+            return responseStatusCode;
         }
     }
 }
