@@ -6,7 +6,6 @@ namespace testFramework.Testcases
 {
     [TestFixture]
     public class HomepageTest : ProjectNUnitTestSetup
-    {    
-
+    {
     }
 }

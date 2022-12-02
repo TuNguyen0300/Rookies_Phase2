@@ -71,7 +71,7 @@ namespace CoreFramework.DriverCore
             {
                 return false;
                 HtmlReport.Fail("selected element" + locator + "is displayed", TakeScreenshot());
-                throw ex; 
+                throw ex;
             }
         }
         public void CompareTitle(string expect)

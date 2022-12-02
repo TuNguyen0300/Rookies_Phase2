@@ -32,7 +32,7 @@ namespace testFramework.Testcases
             homePage.ChangePassword("v@01011990");
 
             
-        } 
+        }
         [Test]
         public void LogOut()
         {

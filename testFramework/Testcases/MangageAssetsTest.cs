@@ -13,13 +13,12 @@ namespace testFramework.Testcases
         public void CreateNewAsset()
         {
             CommonFlow commonFlow = new CommonFlow();
-            MenuLeft menuLeft = new MenuLeft(_driver);
-            ManageAssetPage manageAssetPage = new ManageAssetPage(_driver);
-
             commonFlow.CMUserLogin(_driver);
 
+            MenuLeft menuLeft = new MenuLeft(_driver);
             menuLeft.ClickManageAsset();
 
+            ManageAssetPage manageAssetPage = new ManageAssetPage(_driver);
             manageAssetPage.ClickCreate();
         }
 
