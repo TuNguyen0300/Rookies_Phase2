@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Rookies_Phase2\\testFramework\\testFramework.csproj": {}
+    "E:\\New folder\\Rookies_Phase2\\testFramework\\testFramework.csproj": {}
   },
   "projects": {
-    "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj": {
+    "E:\\New folder\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj",
+        "projectUniqueName": "E:\\New folder\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj",
         "projectName": "CoreFramework",
-        "projectPath": "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj",
+        "projectPath": "E:\\New folder\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj",
         "packagesPath": "C:\\Users\\84366\\.nuget\\packages\\",
-        "outputPath": "E:\\Rookies_Phase2\\CoreFramework\\obj\\",
+        "outputPath": "E:\\New folder\\Rookies_Phase2\\CoreFramework\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\84366\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -100,14 +100,14 @@
         }
       }
     },
-    "E:\\Rookies_Phase2\\testFramework\\testFramework.csproj": {
+    "E:\\New folder\\Rookies_Phase2\\testFramework\\testFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Rookies_Phase2\\testFramework\\testFramework.csproj",
+        "projectUniqueName": "E:\\New folder\\Rookies_Phase2\\testFramework\\testFramework.csproj",
         "projectName": "testFramework",
-        "projectPath": "E:\\Rookies_Phase2\\testFramework\\testFramework.csproj",
+        "projectPath": "E:\\New folder\\Rookies_Phase2\\testFramework\\testFramework.csproj",
         "packagesPath": "C:\\Users\\84366\\.nuget\\packages\\",
-        "outputPath": "E:\\Rookies_Phase2\\testFramework\\obj\\",
+        "outputPath": "E:\\New folder\\Rookies_Phase2\\testFramework\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\84366\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -124,8 +124,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj": {
-                "projectPath": "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj"
+              "E:\\New folder\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj": {
+                "projectPath": "E:\\New folder\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj"
               }
             }
           }

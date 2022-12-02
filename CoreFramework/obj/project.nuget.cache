@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wvr7K+k5c/dckdOrA8J3JHXKqKrQbAfTT9j4MFbbqak5EdT413qtVJmrqEQg79FL5b5n4w4w4hMyQ0sPGOW9ZA==",
+  "dgSpecHash": "QQv9GPoRbcLEmjulR22bY1193z7POxZGiA5Z8XiZ4bRv5AQozDVg2E6QtH74eVHj2WjpNWkEO3cLuLbyTQwZ4A==",
   "success": true,
-  "projectFilePath": "E:\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj",
+  "projectFilePath": "E:\\New folder\\Rookies_Phase2\\CoreFramework\\CoreFramework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\84366\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\84366\\.nuget\\packages\\dnsclient\\1.2.0\\dnsclient.1.2.0.nupkg.sha512",

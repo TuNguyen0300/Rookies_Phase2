@@ -1,11 +1,7 @@
-﻿using NUnit.Framework;
+﻿using CoreFramework.Reporter;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using CoreFramework.Reporter;
-using System.Security.Policy;
-using System;
 using OpenQA.Selenium.Support.UI;
-using SeleniumExtras.WaitHelpers;
-using OpenQA.Selenium.Support.Extensions;
 
 namespace CoreFramework.DriverCore
 {
@@ -61,7 +57,7 @@ namespace CoreFramework.DriverCore
         public Boolean IsElementDisplayed(string locator)
         {
             try
-            {
+            {   WaitForElementExists(driver, locator);
                 FindElementByXpath(locator);
                 TestContext.WriteLine("selected element is displayed");
                 HtmlReport.Pass("selected element" + locator + "is displayed");
@@ -112,6 +108,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
+                WaitForElementToBeClickable(driver, locator);
                 FindElementByXpath(locator).Click();
                 TestContext.Write("Click into element " + locator + " passed ");
                 HtmlReport.Pass("Click into element " + locator + " passed");
@@ -147,6 +144,7 @@ namespace CoreFramework.DriverCore
         {
             try
             {
+                //WaitForElementExists(driver, locator);
                 FindElementByXpath(locator).Clear();
                 FindElementByXpath(locator).SendKeys(key);
                 TestContext.Write("Sendkeys into element " + locator + " passed ");
@@ -167,5 +165,16 @@ namespace CoreFramework.DriverCore
             screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
             return path;
         }
+        public IWebElement WaitForElementToBeClickable(IWebDriver driver, string locator, float timeOut = 30)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
+            return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(locator)));
+        }
+        public IWebElement WaitForElementExists(IWebDriver driver, string locator, float timeOut = 30)
+        {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOut));
+            return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(locator)));
+        }
+
     }
 }

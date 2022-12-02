@@ -19,7 +19,9 @@ namespace testFramework.Testcases
         {
             CommonFlow commonFlow = new CommonFlow();
             commonFlow.CMUserLogin(_driver);
-            Assert.AreEqual(Constant.HOME_URL, Constant.BASE_URL + "home");
+
+            LoginPage login = new LoginPage(_driver);
+            login.DirectCorrectHome();
         }
 
         [Test]
@@ -29,7 +31,8 @@ namespace testFramework.Testcases
             HomePage homePage = new HomePage(_driver);
 
             commonFlow.CMUserLogin(_driver);
-            homePage.ChangePassword("v@01011990");
+            homePage.ChangePassword(Constant.PassID1new);
+            homePage.VerifyBackLoginPage();
 
             
         }
@@ -38,9 +41,31 @@ namespace testFramework.Testcases
         {
             CommonFlow commonFlow = new CommonFlow();
             HomePage menuHeader = new HomePage(_driver);
+            LoginPage login = new LoginPage(_driver);
 
             commonFlow.CMUserLogin(_driver);
             menuHeader.Logout();
+            login.DirectCorrectLogin();
+        }
+        [Test]
+        public void CancelChangePassword()
+        {
+            CommonFlow commonFlow = new CommonFlow();
+            HomePage homePage = new HomePage(_driver);
+
+            commonFlow.CMUserLogin(_driver);
+            homePage.CancelChangePassword();
+            homePage.VerifyBackHomePage();
+        }
+        [Test]
+        public void CancelLogout()
+        {
+            CommonFlow commonFlow = new CommonFlow();
+            HomePage homePage = new HomePage(_driver);
+
+            commonFlow.CMUserLogin(_driver);
+            homePage.CancelLogout();
+            homePage.VerifyBackHomePage();
         }
     }
 }

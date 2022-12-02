@@ -1,11 +1,5 @@
-﻿using AventStack.ExtentReports;
-using CoreFramework.DriverCore;
+﻿using CoreFramework.DriverCore;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace testFramework.PageObject
 {
@@ -21,6 +15,9 @@ namespace testFramework.PageObject
 
         private readonly string btnMenu = "//span[@class='ant-menu-title-content']";
         private readonly string btnChangePass = "//a[text()='Change Password']";
+
+        private readonly string txtHomepage = "//div[text()='Home page']";
+        private readonly string boxLogin = "//div[@class='ant-card-body']";
 
         public void ClickMenu()
         {
@@ -44,7 +41,15 @@ namespace testFramework.PageObject
         {
             Click(buttonLogin);
         }
-        
+        public void DirectCorrectHome()
+        {
+            IsElementDisplayed(txtHomepage);
+        }
+        public void DirectCorrectLogin()
+        {
+            IsElementDisplayed(boxLogin);
+        }
+
 
     }
 }

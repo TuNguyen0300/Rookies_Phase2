@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace testFramework.TestSetup
+﻿namespace testFramework.TestSetup
 {
     public class Constant
     {
@@ -13,7 +7,7 @@ namespace testFramework.TestSetup
 
         public static string UserID1 = "vangdv";
         public static string PassID1 = "vangdv@01011990";
-        public static string PassID1new = "q@01011990";
+        public static string PassID1new = "v@01011990";
 
         public static string UserID3 = "quynhct";
         public static string PassID3 = "quynhct@01011990";
